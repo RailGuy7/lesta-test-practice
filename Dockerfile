@@ -1,14 +1,13 @@
-# Используем базовый образ Python
+# Use lightweight python 3.9 image to save disk space
 FROM python:3.9-slim
 
-# Устанавливаем зависимости
+# Install dependencies
 WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем приложение
-COPY . .
+# Copy application into container
+COPY app.py .
 
-# Запускаем приложение
-CMD ["python", "app.py"]
-
+# Start the application
+CMD ["python3", "app.py"]
